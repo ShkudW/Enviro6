@@ -80,14 +80,14 @@ def check_hosts(ip_range, iface):
 def check_dhcp_servers(ip_range, iface):
     log("Checking for DHCP servers in the environment...")
     
-    
+    # Construct a DHCPDISCOVER packet
     dhcp_discover = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")/scapy.IP(src="0.0.0.0", dst="255.255.255.255")/scapy.UDP(sport=68, dport=67)/scapy.BOOTP(chaddr=scapy.get_if_hwaddr(iface))/scapy.DHCP(options=[("message-type", "discover"), ("end")])
 
-    
+    # Send the packet multiple times to ensure it is received
     for _ in range(3):
         scapy.sendp(dhcp_discover, iface=iface, verbose=True)
 
-    
+    # Sniff for responses
     dhcp_offers = scapy.sniff(iface=iface, filter="udp and (port 67 or port 68)", timeout=10)
 
     dhcp_servers = set()
@@ -108,7 +108,8 @@ def check_dhcp_servers(ip_range, iface):
 
 def dhcp_starvation_attack(ip_range, iface):
     log("Performing DHCP starvation attack...")
-
+    # Implement the DHCP starvation attack logic
+    # This can be complex and involves crafting DHCP requests with random MAC addresses
 
 def assign_ipv6_addresses(ip_range, iface):
     configure_dhcpv6(iface)
@@ -144,7 +145,13 @@ def configure_dhcpv6(iface):
     if ipv6_address:
         # Stop any existing dnsmasq instances
         log("Stopping any existing dnsmasq instances...")
-        subprocess.run(["sudo", "pkill", "dnsmasq"], check=True)
+        try:
+            subprocess.run(["sudo", "pkill", "dnsmasq"], check=True)
+        except subprocess.CalledProcessError as e:
+            if e.returncode == 1:
+                log("No dnsmasq process was running.")
+            else:
+                raise
         
         dhcpv6_config = f"""
 port=0
@@ -156,7 +163,7 @@ dhcp-option=option6:dns-server,{ipv6_address}
         config_file.write(dhcpv6_config)
         config_file.flush()
         
-        
+        # Start dnsmasq with the DHCPv6 configuration
         log("Starting DHCPv6 server...")
         subprocess.run(["sudo", "dnsmasq", "-C", config_file.name], check=True)
         log("DHCPv6 server started.")
