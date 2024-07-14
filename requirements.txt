@@ -1,0 +1,4 @@
+scapy
+netaddr
+termcolor
+argparse
