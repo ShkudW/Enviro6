@@ -12,6 +12,9 @@ Enviro6 is a penetration testing tool for network environments. It allows you to
 ## Usage
 
 ### Basic Usage
+First configure this at you Machine:
+
+sudo ip -6 addr add 2001:db8::1/64 dev eth0
 
 ```bash
 python Enviro6.py -ip_range <IP_RANGE> -iface <INTERFACE> <OPTIONS>
