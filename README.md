@@ -71,7 +71,7 @@ To use Enviro6, you'll need Python 3.x installed on your system. Follow these st
 
 ## Usage
 ```
-python3 Enviro6.py -I <network_interface> -timeout <seconds>
+python3 Enviro6.py -I <network_interface> 
 ```
 
 ```
