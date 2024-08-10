@@ -1,0 +1,4 @@
+scapy==2.4.5
+tqdm==4.64.1
+tabulate==0.8.9
+colorama==0.4.5
