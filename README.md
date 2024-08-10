@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/af6f886a-d31e-4bad-86df-9ba01ae58faa)
+
+
+
 # Enviro6
 
 Enviro6 is a smart script designed for discovering and managing IPv6 addresses within networks. The tool enables device detection through DHCPv6 and NDP scanning, allowing users to bypass IPv4 isolation restrictions and communicate with other devices using IPv6. It features a colorful, dynamic interface for easy visualization of discovered information.
