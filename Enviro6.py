@@ -7,13 +7,13 @@ from tabulate import tabulate
 from scapy.all import sniff, sendp, IPv6, Ether, UDP, DHCP6_Solicit, DHCP6_Advertise, DHCP6_Reply, DHCP6OptIA_NA, DHCP6OptClientId, DHCP6OptServerId, ICMPv6ND_NS, ICMPv6ND_NA, conf
 from colorama import Fore, Style, init
 
-# Initialize colorama
+
 init(autoreset=True)
 
-# Disable Scapy's verbose output to prevent "Sent 1 packets." messages
+
 conf.verb = 0
 
-# Banner to display
+
 banner = f"""
 {Fore.CYAN}  ______            _             __  
  |  ____|          (_)           / /  
@@ -26,22 +26,22 @@ banner = f"""
 {Style.RESET_ALL}
 """
 
-# Table to store mappings between MAC addresses and IPv6 addresses
+
 device_info = {}
 dhcp_assigned_devices = {}  # Table to store devices that received an internal IPv6 address
 
-# Function to handle DHCPv6 packets
+
 def handle_dhcpv6(packet):
     global dhcp_assigned_devices  # Ensure access to global variable
     if DHCP6_Solicit in packet:
         mac_address = packet[Ether].src
         client_id = packet[DHCP6OptClientId].duid
 
-        # Assign an internal IPv6 address to the device
+        
         ipv6_internal = f"fd00::{len(dhcp_assigned_devices) + 1}"
         dhcp_assigned_devices[mac_address] = ipv6_internal
 
-        # Create and send DHCPv6 Advertise response
+        
         advertise = Ether(src=packet[Ether].dst, dst=packet[Ether].src) / \
                     IPv6(src=packet[IPv6].dst, dst=packet[IPv6].src) / \
                     UDP(sport=547, dport=546) / \
@@ -54,7 +54,7 @@ def handle_dhcpv6(packet):
 
         time.sleep(1)
 
-        # Create and send DHCPv6 Reply response
+        
         reply = Ether(src=packet[Ether].dst, dst=packet[Ether].src) / \
                 IPv6(src=packet[IPv6].dst, dst=packet[IPv6].src) / \
                 UDP(sport=547, dport=546) / \
@@ -88,7 +88,7 @@ def handle_packet(packet):
     else:  # גלובלית
         device_info[mac_address]["global"] = ipv6_address
 
-# Function to print the final device table
+
 def print_device_table(dhcpv6_mode=False):
     headers = [Fore.CYAN + "No.", "MAC Address", "IPv6 Address" + Style.RESET_ALL]
     table = []
@@ -131,7 +131,7 @@ def send_ndp_requests(interface):
         sendp(ns_packet, iface=interface)
         time.sleep(0.1)  # Delay between requests to avoid flooding the network
 
-# Main function for threading and progress bar
+
 def main():
     global device_info  # Ensure access to global variable
     parser = argparse.ArgumentParser(description="DHCPv6 Server and NDP Sniffer")
@@ -163,14 +163,14 @@ def main():
             pbar.set_postfix({"Devices found": len(device_info)})
             pbar.update(1)
 
-    # Wait for all threads to complete
+    
     sniff_solicit_thread.join()
     sniff_ndp_thread.join()
     proactive_ndp_thread.join()
     if args.DHCPv6:
         dhcp_thread.join()
 
-    # Print the appropriate table based on DHCPv6 mode
+    
     print_device_table(dhcpv6_mode=args.DHCPv6)
     print("\n" + Fore.GREEN + "Script completed based on the timeout value." + Style.RESET_ALL)
     sys.exit(0)  # Ensure the script exits cleanly
