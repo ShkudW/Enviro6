@@ -8,16 +8,16 @@ from tabulate import tabulate
 from scapy.all import sniff, sendp, IPv6, Ether, UDP, DHCP6_Solicit, DHCP6_Advertise, DHCP6_Reply, DHCP6OptIA_NA, DHCP6OptClientId, DHCP6OptServerId, ICMPv6ND_NS, ICMPv6EchoRequest, conf
 from colorama import Fore, Style, init
 
-# Initialize colorama
+
 init(autoreset=True)
 
-# Disable Scapy's verbose output to prevent "Sent 1 packets." messages
+
 conf.verb = 0
 
-# Configure logging
+
 logging.basicConfig(filename='enviro6.log', level=logging.DEBUG, format='%(asctime)s - %(message)s')
 
-# Banner to display
+
 banner = f"""
 {Fore.CYAN}  ______            _             __  
  |  ____|          (_)           / /  
@@ -30,7 +30,7 @@ banner = f"""
 {Style.RESET_ALL}
 """
 
-# Table to store mappings between MAC addresses and IPv6 addresses
+
 device_info = {}
 dhcp_assigned_devices = {}  # Table to store devices that received an internal IPv6 address
 
@@ -120,7 +120,7 @@ def send_ndp_requests(interface):
         multicast_address = f"ff02::1:ff00:{i:04x}"
         ns_packet = Ether(dst="33:33:00:00:00:01") / IPv6(dst=multicast_address) / ICMPv6ND_NS(tgt=multicast_address)
         sendp(ns_packet, iface=interface)
-        time.sleep(0.005)  # Reduced sleep time to increase speed
+        time.sleep(0.005)  
     logging.debug("Finished send_ndp_requests.")
 
 def print_device_table(dhcpv6_mode=False):
@@ -200,7 +200,7 @@ def main():
             pbar.update(1)
 
     for thread in threads:
-        thread.join(timeout=5)  # Join threads with a short timeout to avoid deadlocks
+        thread.join(timeout=5)  
         if thread.is_alive():
             logging.warning(f"Thread {thread.name} did not finish in time.")
 
