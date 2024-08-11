@@ -29,8 +29,11 @@ How a Device Receives an IPv6 Address (Global or Local):
 This process is quite similar to the "DORA" process in IPv4. This process also consists of 4 stages:
 
 a) The client sends a Solicit message to all servers in the network to request an IP address.
+
 b) The server responds with an Advertise message offering an IPv6 address.
+
 C) The client sends a Request message requesting the offered address.
+
 D) The server responds with a Reply message confirming the allocation of the address.
 
 
