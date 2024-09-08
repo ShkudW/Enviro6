@@ -20,7 +20,7 @@ banner = f"""
  | |____| | | \ V /| | | | (_) | (_) |
  |______|_| |_|\_/ |_|_|  \___/ \___/ 
 {Fore.GREEN}By @ShkudW
-{Fore.YELLOW}https://github.com/ShkudW
+{Fore.YELLOW}https://github.com/ShkudW/Enviro6
 {Style.RESET_ALL}
 """
 
