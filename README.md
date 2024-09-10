@@ -1,6 +1,8 @@
-# Enviro6 - IPv6 Attack and Sniffing Tool
+# Enviro6 -  IPv6 DHCP & DNS Server Configuration Tool and Sniffing Tool
 
-Enviro6 is a Python-based tool designed for performing various IPv6 network attacks and sniffing operations. The tool allows you to conduct RA Spoofing, NDP Spoofing, and RA Flood attacks, as well as sniff network traffic to gather information about connected devices. 
+
+This tool is designed to automatically set up and configure a Linux-based server (e.g., Kali Linux) as an IPv6 DHCP, DNS, and Router Advertisement Daemon (RADVD) server. The script facilitates the deployment of a fully functional IPv6 environment, where the server can act as the default gateway, DNS server, and DHCPv6 server for the network clients.
+
 
 ## Features - Enviro6.py
 
@@ -16,11 +18,24 @@ Enviro6 is a Python-based tool designed for performing various IPv6 network atta
 
 ## Requirements
 
-Install the required Python packages by running:
 
+Installed Services: isc-dhcp-server, dnsmasq, radvd.
+```bash
+sudo apt-get install isc-dhcp-server
+sudo apt-get install dnsmasq
+sudo apt-get install radvd
+```
+
+Install the required Python packages by running:
 ```bash
 pip install -r requirements.txt
 ```
+
+## Usage - Enviro6-DHCP-DNS-Server.py:
+-iface: The network interface to use (e.g., eth0).
+-dns -domain DOMAIN.co.il: The domain name that will be translated into the ULA address and the IPv6 address of your machine.
+-restore: Return the state of all configuration on the machine to their original state, before the start of the attack.
+
 
 ## Usage - Enviro6.py
 ```
@@ -36,11 +51,14 @@ Options:
 --target-ipv6: The target IPv6 address for NDP Spoofing.
 --fake-mac: The fake MAC address to use for NDP Spoofing.
 
-## Usage - Enviro6-DHCP-DNS-Server.py:
--iface: The network interface to use (e.g., eth0).
--dns -domain DOMAIN.co.il: The domain name that will be translated into the ULA address and the IPv6 address of your machine.
--restore: Return the state of all configuration on the machine to their original state, before the start of the attack.
 
+
+## Example Commands - Enviro6-DHCP-DNS-Server.py:
+
+Open DHCPv6 and DNSv6 Server:
+```
+python3 Enviro6-DHCP-DNS-Server.py -iface eth0 -dns -domain godfather.local
+```
 
 ## Example Commands - Enviro6.py:
 
@@ -63,21 +81,12 @@ Sniffing
 python3 enviro6.py -I eth0 --sniff
 ```
 
-## Example Commands - Enviro6-DHCP-DNS-Server.py:
-
-Open DHCPv6 and DNSv6 Server:
-```
-python3 Enviro6-DHCP-DNS-Server.py -iface eth0 -dns -domain godfather.local
-```
-
 
 ## Monitoring Traffic with TCPDump
 ```
 sudo tcpdump -i eth0 ip6
 ```
 
-## Disclaimer
-This tool is intended for educational purposes only and should only be used in environments where you have explicit permission to perform testing. Unauthorized use of this tool in a production network or without permission is illegal and unethical.
 
 ## PoC - Enviro6-DHCP-DNS-Server.py:
 Start DHCP and DNS version 6 Servers:
