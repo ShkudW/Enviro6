@@ -57,9 +57,6 @@ Options:
 * --target-ipv6: The target IPv6 address for NDP Spoofing.
 * --fake-mac: The fake MAC address to use for NDP Spoofing.
 
-
-## Example Commands - Enviro6.py:
-
 RA Spoofing:
 ```
 python3 Enviro6.py -I eth0 --ra-spoof
