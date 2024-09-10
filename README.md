@@ -30,7 +30,7 @@ The tool is Python-based and requires a few dependencies to be installed on a Ka
 
 3. Run the script with the appropriate flags:
     ```bash
-    python3 test1.py -iface eth0 -dns -domain example.com
+    python3 Enviro6.py -iface eth0 -dns -domain example.com
     ```
 
 ## Usage
@@ -49,23 +49,24 @@ Enviro6 provides several command-line options to control its behavior:
 
 - **Setting up DHCPv6 and DNSv6**:
     ```bash
-    python3 test1.py -iface eth0 -dns -domain example.com
+    python3 Enviro6.py -iface <eth0> -dns -domain <example.co.il>
     ```
 
 - **Sniffing NDP traffic**:
     ```bash
-    python3 test1.py -iface eth0 -sniff
+    python3 Enviro6.py -iface <eth0> -sniff
     ```
 
 - **Restoring configurations**:
     ```bash
-    python3 test1.py -restore
+    python3 Enviro6.py -restore
     ```
 
-## PoC - Enviro6-DHCP-DNS-Server.py:
-Start DHCP and DNS version 6 Servers:
-![image](https://github.com/user-attachments/assets/077d080a-a7eb-4abd-92e4-a07c0b784fd3)
+## PoC:
 
+Starting DHCP and DNS Servers:
+
+![image](https://github.com/user-attachments/assets/077d080a-a7eb-4abd-92e4-a07c0b784fd3)
 
 
 The Victim (Windows 10 Machine, BefireThe Attack and After):
