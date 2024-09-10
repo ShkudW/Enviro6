@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 ## Usage - Enviro6-DHCP-DNS-Server.py:
 ```
-python3 Enviro6-DHCP-DNS-Server.py -iface eth0 -dns -domain godfather.local
+python3 Enviro6-DHCP-DNS-Server.py -iface <interface> -dns -domain <DomainName.co.il>
 ```
 
 Options:
