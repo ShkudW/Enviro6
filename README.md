@@ -24,6 +24,7 @@ Installed Services: isc-dhcp-server, dnsmasq, radvd.
 sudo apt-get install isc-dhcp-server
 sudo apt-get install dnsmasq
 sudo apt-get install radvd
+sudo apt-get install netplan
 ```
 
 Install the required Python packages by running:
