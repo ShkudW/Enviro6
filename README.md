@@ -33,9 +33,9 @@ pip install -r requirements.txt
 ```
 
 ## Usage - Enviro6-DHCP-DNS-Server.py:
--iface: The network interface to use (e.g., eth0).
--dns -domain DOMAIN.co.il: The domain name that will be translated into the ULA address and the IPv6 address of your machine.
--restore: Return the state of all configuration on the machine to their original state, before the start of the attack.
+* -iface: The network interface to use (e.g., eth0).
+* -dns -domain DOMAIN.co.il: The domain name that will be translated into the ULA address and the IPv6 address of your machine.
+* -restore: Return the state of all configuration on the machine to their original state, before the start of the attack.
 
 
 ## Usage - Enviro6.py
