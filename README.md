@@ -14,7 +14,7 @@ This tool is designed to automatically set up and configure a Linux-based server
 
 ## Features - Enviro6-DHCP-DNS-Server.py
 - **DHCPv6 Server**: Turns your machine into a DHCPv6 server that distributes ULA addresses to all the stations that request to receive IPv6 articles automatically.
-- **DNSv6 Server**: Turns your machine into a DNSv6 server , With the option to add a domain name that will be translated in the AAAA and A record to the address of your machine.
+- **DNSv6 Server**: Turns your machine into a DNSv6 server , With the option to add a domain name that will be translated in the AAAA and A record to the IP address of your machine.
 
 ## Requirements
 
