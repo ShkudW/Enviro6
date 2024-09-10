@@ -2,12 +2,17 @@
 
 Enviro6 is a Python-based tool designed for performing various IPv6 network attacks and sniffing operations. The tool allows you to conduct RA Spoofing, NDP Spoofing, and RA Flood attacks, as well as sniff network traffic to gather information about connected devices. 
 
-## Features
+## Features - Enviro6.py
 
 - **RA Spoofing**: Spoof Router Advertisements to hijack the default gateway of IPv6 devices.
 - **NDP Spoofing**: Spoof Neighbor Discovery Protocol messages to associate an IP address with a fake MAC address.
 - **RA Flood**: Flood the network with Router Advertisements to disrupt or take over the network.
 - **Sniffing**: Capture and display Link-Local, ULA, and Global IPv6 addresses associated with MAC addresses in real-time.
+
+
+## Features - Enviro6-DHCP-DNS-Server.py
+- **DHCPv6 Server**: Turns your machine into a DHCPv6 server that distributes ULA addresses to all the stations that request to receive IPv6 articles automatically.
+- **DNSv6 Server**: Turns your machine into a DNSv6 server , With the option to add a domain name that will be translated in the AAAA and A record to the address of your machine.
 
 ## Requirements
 
@@ -17,7 +22,7 @@ Install the required Python packages by running:
 pip install -r requirements.txt
 ```
 
-## Usage
+## Usage - Enviro6.py
 ```
 python3 Enviro6.py -I <interface> [options]
 
@@ -31,7 +36,13 @@ Options:
 --target-ipv6: The target IPv6 address for NDP Spoofing.
 --fake-mac: The fake MAC address to use for NDP Spoofing.
 
-## Example Commands
+## Usage - Enviro6-DHCP-DNS-Server.py:
+-iface: The network interface to use (e.g., eth0).
+-dns -domain DOMAIN.co.il: The domain name that will be translated into the ULA address and the IPv6 address of your machine.
+-restore: Return the state of all configuration on the machine to their original state, before the start of the attack.
+
+
+## Example Commands - Enviro6.py:
 
 RA Spoofing:
 ```
@@ -51,6 +62,15 @@ Sniffing
 ```
 python3 enviro6.py -I eth0 --sniff
 ```
+
+## Example Commands - Enviro6-DHCP-DNS-Server.py:
+
+Open DHCPv6 and DNSv6 Server:
+```
+python3 Enviro6-DHCP-DNS-Server.py -iface eth0 -dns -domain godfather.local
+```
+
+
 ## Monitoring Traffic with TCPDump
 ```
 sudo tcpdump -i eth0 ip6
@@ -59,30 +79,23 @@ sudo tcpdump -i eth0 ip6
 ## Disclaimer
 This tool is intended for educational purposes only and should only be used in environments where you have explicit permission to perform testing. Unauthorized use of this tool in a production network or without permission is illegal and unethical.
 
-## PoC
-RA-Spoof Attack:
-
-Windows 10:
-IPv4 - 192.168.74.2
-IPv6 Link-Local-Address - fe80::f524:c89b:11bb:d7be
-
-![image](https://github.com/user-attachments/assets/11771e50-72f9-429a-ad83-ee18512446d9)
-
-Statring RA-Spoof attack:
-![image](https://github.com/user-attachments/assets/2d6bcabd-e8f9-4ee2-8c9b-f19aa39548eb)
+## PoC - Enviro6-DHCP-DNS-Server.py:
+Start DHCP and DNS version 6 Servers:
+![image](https://github.com/user-attachments/assets/24cdbed0-340d-44a2-ae23-e22fe707cb31)
 
 
-The Windows 10 after the attack:
-![image](https://github.com/user-attachments/assets/16700b82-b8a1-4fb3-9e9e-8bcf40f595c5)
- * The Default-Gateway is the Kali now.
+The Victim (Windows 10 Machine, BefireThe Attack and After):
+![image](https://github.com/user-attachments/assets/ed9288f4-05ac-438b-9c6d-8d597aebbda5)
 
-NDP-spoof Attack:
 
-![image](https://github.com/user-attachments/assets/65e25f6d-9fcc-40dc-ae9a-35d5f98d0b2d)
+The Victim's DNS Server:
+![image](https://github.com/user-attachments/assets/38f5e133-d930-488d-bde9-7504c7563d32)
 
-* put the Link-Local-Address that you want to spoof, and the MAc-Address of yours machine
-The Windows 10 after attack:
-![image](https://github.com/user-attachments/assets/e1d24cee-c4e4-4cdf-a705-87d1ff5e53a6)
+
+Stop The attack and Restore all the configuration on kali machine:
+
+![image](https://github.com/user-attachments/assets/9b4a1f50-26b3-4183-989b-3d3ad3b78837)
+
 
 # Enjoy!
 
