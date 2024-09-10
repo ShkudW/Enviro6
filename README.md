@@ -43,14 +43,13 @@ python3 Enviro6.py -I <interface> [options]
 ```
 
 Options:
--I, --interface: The network interface to use (e.g., eth0).
---ra-spoof: Run an RA Spoofing attack.
---ndp-spoof: Run an NDP Spoofing attack. Requires --target-ipv6 and --fake-mac.
---ra-flood: Run an RA Flood attack.
---sniff: Sniff the network and display IPv6 addresses associated with MAC addresses in real-time.
---target-ipv6: The target IPv6 address for NDP Spoofing.
---fake-mac: The fake MAC address to use for NDP Spoofing.
-
+* -I, --interface: The network interface to use (e.g., eth0).
+* --ra-spoof: Run an RA Spoofing attack.
+* --ndp-spoof: Run an NDP Spoofing attack. Requires --target-ipv6 and --fake-mac.
+* --ra-flood: Run an RA Flood attack.
+* --sniff: Sniff the network and display IPv6 addresses associated with MAC addresses in real-time.
+* --target-ipv6: The target IPv6 address for NDP Spoofing.
+* --fake-mac: The fake MAC address to use for NDP Spoofing.
 
 
 ## Example Commands - Enviro6-DHCP-DNS-Server.py:
