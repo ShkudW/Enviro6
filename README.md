@@ -33,18 +33,6 @@ The tool is Python-based and requires a few dependencies to be installed on a Ka
     python3 Enviro6.py -iface eth0 -dns -domain example.com
     ```
 
-## Usage
-
-Enviro6 provides several command-line options to control its behavior:
-
-- **-iface <interface>**: Specifies the network interface to use (e.g., `eth0`).
-- **-dns**: Sets up a DNSv6 server.
-- **-domain <domain>**: Defines the domain name to be mapped to the IPv6 and IPv4 addresses (must be used with `-dns`).
-- **-sniff**: Starts sniffing NDP traffic on the specified interface.
-- **-ra-flood --target <target>**: Initiates a Router Advertisement flood attack on the specified target.
-- **-ndp-spoof --target-ipv6 <target_ipv6> --fake-mac <mac_address>**: Performs an NDP spoofing attack by changing the MAC address associated with the target IPv6 address.
-- **-restore**: Restores the network configurations to their original state before any changes were made by the tool.
-
 ### Examples
 
 - **Setting up DHCPv6 and DNSv6**:
