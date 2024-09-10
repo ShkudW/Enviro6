@@ -28,11 +28,6 @@ The tool is Python-based and requires a few dependencies to be installed on a Ka
     pip3 install colorama
     ```
 
-3. Run the script with the appropriate flags:
-    ```bash
-    python3 Enviro6.py -iface eth0 -dns -domain example.com
-    ```
-
 ### Examples
 
 - **Setting up DHCPv6 and DNSv6**:
