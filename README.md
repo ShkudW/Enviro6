@@ -75,9 +75,7 @@ Sniffing
 ```
 python3 enviro6.py -I eth0 --sniff
 ```
-
-
-## Monitoring Traffic with TCPDump
+Monitoring Traffic with TCPDump
 ```
 sudo tcpdump -i eth0 ip6
 ```
