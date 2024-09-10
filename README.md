@@ -64,7 +64,8 @@ Enviro6 provides several command-line options to control its behavior:
 
 ## PoC - Enviro6-DHCP-DNS-Server.py:
 Start DHCP and DNS version 6 Servers:
-![image](https://github.com/user-attachments/assets/24cdbed0-340d-44a2-ae23-e22fe707cb31)
+![image](https://github.com/user-attachments/assets/077d080a-a7eb-4abd-92e4-a07c0b784fd3)
+
 
 
 The Victim (Windows 10 Machine, BefireThe Attack and After):
@@ -78,7 +79,12 @@ The Victim's DNS Server:
 
 Stop The attack and Restore all the configuration on kali machine:
 
-![image](https://github.com/user-attachments/assets/9b4a1f50-26b3-4183-989b-3d3ad3b78837)
+![image](https://github.com/user-attachments/assets/72ed76a9-709b-4721-97dc-885711f2a936)
+
+
+Sniffing function:
+
+![image](https://github.com/user-attachments/assets/e037883e-c98a-46aa-8f6c-206c5a8cf739)
 
 
 # Enjoy!
