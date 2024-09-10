@@ -6,7 +6,7 @@ This tool is designed to automatically set up and configure a Linux-based server
 ## Key Features
 
 - **DHCPv6**: Automatically set up a DHCPv6 server with a unique ULA (Unique Local Address) to assign IPv6 addresses to devices on the network.
-- **DNSv6**: Configure a DNSv6 server that maps domains to IPv6 and IPv4 addresses as specified by the user.
+- **DNS**: Configure a DNS server that maps domains to IPv6 and IPv4 addresses as specified by the user.
 - **Router Advertisement (RA)**: Broadcast router advertisements in the network to inform devices about router addresses and other configurations.
 - **Sniffing**: Monitor and listen to Neighbor Discovery Protocol (NDP) activity in the network.
 - **Restore**: Restore network settings to their previous state before any changes were made by the tool.
