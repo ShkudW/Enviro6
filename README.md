@@ -3,83 +3,64 @@
 
 This tool is designed to automatically set up and configure a Linux-based server (e.g., Kali Linux) as an IPv6 DHCP, DNS, and Router Advertisement Daemon (RADVD) server. The script facilitates the deployment of a fully functional IPv6 environment, where the server can act as the default gateway, DNS server, and DHCPv6 server for the network clients.
 
+## Key Features
 
-## Features - Enviro6.py
+- **DHCPv6**: Automatically set up a DHCPv6 server with a unique ULA (Unique Local Address) to assign IPv6 addresses to devices on the network.
+- **DNSv6**: Configure a DNSv6 server that maps domains to IPv6 and IPv4 addresses as specified by the user.
+- **Router Advertisement (RA)**: Broadcast router advertisements in the network to inform devices about router addresses and other configurations.
+- **Sniffing**: Monitor and listen to Neighbor Discovery Protocol (NDP) activity in the network.
+- **Restore**: Restore network settings to their previous state before any changes were made by the tool.
 
-- **RA Spoofing**: Spoof Router Advertisements to hijack the default gateway of IPv6 devices.
-- **NDP Spoofing**: Spoof Neighbor Discovery Protocol messages to associate an IP address with a fake MAC address.
-- **RA Flood**: Flood the network with Router Advertisements to disrupt or take over the network.
-- **Sniffing**: Capture and display Link-Local, ULA, and Global IPv6 addresses associated with MAC addresses in real-time.
+## Installation
 
+The tool is Python-based and requires a few dependencies to be installed on a Kali Linux environment.
 
-## Features - Enviro6-DHCP-DNS-Server.py
-- **DHCPv6 Server**: Turns your machine into a DHCPv6 server that distributes ULA addresses to all the stations that request to receive IPv6 articles automatically.
-- **DNSv6 Server**: Turns your machine into a DNSv6 server , With the option to add a domain name that will be translated in the AAAA and A record to the IP address of your machine.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/ShkudW/Enviro6.git
+    cd Enviro6
+    ```
 
-## Requirements
+2. Install the necessary dependencies:
+    ```bash
+    sudo apt-get update
+    sudo apt-get install isc-dhcp-server dnsmasq radvd python3-pip
+    pip3 install colorama
+    ```
 
+3. Run the script with the appropriate flags:
+    ```bash
+    python3 test1.py -iface eth0 -dns -domain example.com
+    ```
 
-Installed Services: isc-dhcp-server, dnsmasq, radvd.
-```bash
-sudo apt-get install isc-dhcp-server
-sudo apt-get install dnsmasq
-sudo apt-get install radvd
-sudo apt-get install netplan
-```
+## Usage
 
-Install the required Python packages by running:
-```bash
-pip install -r requirements.txt
-```
+Enviro6 provides several command-line options to control its behavior:
 
-## Usage - Enviro6-DHCP-DNS-Server.py:
-```
-python3 Enviro6-DHCP-DNS-Server.py -iface <interface> -dns -domain <DomainName.co.il>
-```
+- **-iface <interface>**: Specifies the network interface to use (e.g., `eth0`).
+- **-dns**: Sets up a DNSv6 server.
+- **-domain <domain>**: Defines the domain name to be mapped to the IPv6 and IPv4 addresses (must be used with `-dns`).
+- **-sniff**: Starts sniffing NDP traffic on the specified interface.
+- **-ra-flood --target <target>**: Initiates a Router Advertisement flood attack on the specified target.
+- **-ndp-spoof --target-ipv6 <target_ipv6> --fake-mac <mac_address>**: Performs an NDP spoofing attack by changing the MAC address associated with the target IPv6 address.
+- **-restore**: Restores the network configurations to their original state before any changes were made by the tool.
 
-Options:
-* -iface: The network interface to use (e.g., eth0).
-* -dns -domain DOMAIN.co.il: The domain name that will be translated into the ULA address and the IPv6 address of your machine.
-* -restore: Return the state of all configuration on the machine to their original state, before the start of the attack.
+### Examples
 
+- **Setting up DHCPv6 and DNSv6**:
+    ```bash
+    python3 test1.py -iface eth0 -dns -domain example.com
+    ```
 
-## Usage - Enviro6.py
-```
-python3 Enviro6.py -I <interface> [options]
-```
+- **Sniffing NDP traffic**:
+    ```bash
+    python3 test1.py -iface eth0 -sniff
+    ```
 
-Options:
-* -I, --interface: The network interface to use (e.g., eth0).
-* --ra-spoof: Run an RA Spoofing attack.
-* --ndp-spoof: Run an NDP Spoofing attack. Requires --target-ipv6 and --fake-mac.
-* --ra-flood: Run an RA Flood attack.
-* --sniff: Sniff the network and display IPv6 addresses associated with MAC addresses in real-time.
-* --target-ipv6: The target IPv6 address for NDP Spoofing.
-* --fake-mac: The fake MAC address to use for NDP Spoofing.
-
-RA Spoofing:
-```
-python3 Enviro6.py -I eth0 --ra-spoof
-
-```
-NDP Spoofing:
-```
-python3 enviro6.py -I eth0 --ndp-spoof --target-ipv6 fe80::f524:c89b:11bb:d7be --fake-mac 11:22:33:44:55:66
-
-```
-RA Flood
-```
-python3 enviro6.py -I eth0 --ra-flood
-```
-Sniffing
-```
-python3 enviro6.py -I eth0 --sniff
-```
-Monitoring Traffic with TCPDump
-```
-sudo tcpdump -i eth0 ip6
-```
-
+- **Restoring configurations**:
+    ```bash
+    python3 test1.py -restore
+    ```
 
 ## PoC - Enviro6-DHCP-DNS-Server.py:
 Start DHCP and DNS version 6 Servers:
