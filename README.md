@@ -89,6 +89,7 @@ The Victim (Windows 10 Machine, BefireThe Attack and After):
 
 
 The Victim's DNS Server:
+
 ![image](https://github.com/user-attachments/assets/38f5e133-d930-488d-bde9-7504c7563d32)
 
 
