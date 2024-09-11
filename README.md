@@ -52,7 +52,7 @@ Starting DHCP and DNS Servers:
 ![image](https://github.com/user-attachments/assets/077d080a-a7eb-4abd-92e4-a07c0b784fd3)
 
 
-The Victim (Windows 10 Machine, BefireThe Attack and After):
+The Victim (Windows 10 Machine, Before The Attack and After):
 ![image](https://github.com/user-attachments/assets/ed9288f4-05ac-438b-9c6d-8d597aebbda5)
 
 
